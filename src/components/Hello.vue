@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{msg}}</h1>
+    <button id="hello!"  @click="add()"></button>
     <ul>
       <li><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
     </ul>
@@ -10,19 +11,28 @@
 <script>
 export default {
   name: 'Hello',
+  methods : {
+      add :function (){
+        this.msg = 'wa!'
+      }
+  },
   data () {
     return {
-      msg: 'The world is in your eyes.'
+      msg: 'The world is under your eyes!'
     }
-  }
+  },
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
-  font-weight: normal;
+  font-weight: bolder;
+  font-size: 6vmin;
+
 }
+
 ul {
   list-style-type: none;
   padding: 0;
