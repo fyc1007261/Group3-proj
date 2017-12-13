@@ -1,7 +1,18 @@
 <template>
   <div class="hello">
     <h1 v-bind:style="{color: Africa.color}">{{msg}}</h1>
-    <button @click="add()">获取新闻</button>
+    <div class="Am">
+      America
+    </div>
+    <div class="As">
+      Asia
+    </div>
+    <div class="Eu">
+      Europe
+    </div>
+    <div class="Af">
+      Africa
+    </div>
     <ul>
       <li><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
     </ul>
@@ -57,10 +68,41 @@ button{
   width: 20vmin;
   font-size: 4vmin;
 }
-h1, h2 {
+h1 {
   font-weight: bolder;
   font-size: 6vmin;
-
+}
+.hello{
+  word-wrap: break-word;
+  margin-top: 2vmin;
+}
+.Am{
+  float: left;
+  width: 40vmin;
+  height: 60vmin;
+  background: aqua;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.As{
+  float: right;
+  width: 40vmin;
+  height: 60vmin;
+  background: lightgrey;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.Eu{
+  margin-left: 40vmin;
+  margin-right: 40vmin;
+  height: 30vmin;
+  background:greenyellow;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.Af{
+  margin-left: 40vmin;
+  margin-right: 40vmin;
+  height: 30vmin;
+  background:orangered;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 
 ul {
