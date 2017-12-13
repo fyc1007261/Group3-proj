@@ -77,6 +77,7 @@ h1 {
   margin-top: 2vmin;
 }
 .Am{
+  margin-left: 10vmin;
   float: left;
   width: 40vmin;
   height: 60vmin;
@@ -84,6 +85,7 @@ h1 {
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 .As{
+  margin-right: 10vmin;
   float: right;
   width: 40vmin;
   height: 60vmin;
@@ -91,15 +93,15 @@ h1 {
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 .Eu{
-  margin-left: 40vmin;
-  margin-right: 40vmin;
+  margin-left: 50vmin;
+  margin-right: 50vmin;
   height: 30vmin;
   background:greenyellow;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 .Af{
-  margin-left: 40vmin;
-  margin-right: 40vmin;
+  margin-left: 50vmin;
+  margin-right: 50vmin;
   height: 30vmin;
   background:orangered;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
