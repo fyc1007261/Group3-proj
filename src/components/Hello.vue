@@ -136,6 +136,7 @@ p{
   margin-top: 2vmin;
 }
 .Am{
+  margin-left: 10vmin;
   float: left;
   margin-left: 10vmin;
   width: 40vmin;
@@ -144,6 +145,7 @@ p{
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 .As{
+  margin-right: 10vmin;
   float: right;
   margin-right: 10vmin;
   width: 40vmin;
