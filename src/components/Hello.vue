@@ -138,7 +138,6 @@ p{
 .Am{
   margin-left: 10vmin;
   float: left;
-  margin-left: 10vmin;
   width: 40vmin;
   height: 70vmin;
   background: aqua;
@@ -147,7 +146,6 @@ p{
 .As{
   margin-right: 10vmin;
   float: right;
-  margin-right: 10vmin;
   width: 40vmin;
   height: 70vmin;
   background: lightgrey;
@@ -181,7 +179,7 @@ a {
 }
 .leftBtn1{
   float: left;
-  margin-top: 25vmin;
+  margin-top:32vmin;
   width: 5vmin;
   height: 6vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
@@ -189,14 +187,14 @@ a {
 }
 .rightBtn1{
   float: right;
-  margin-top: 25vmin;
+  margin-top: 32vmin;
   width: 5vmin;
   height: 6vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
 .leftBtn2{
   float: left;
-  margin-top: 10vmin;
+  margin-top: 15vmin;
   width: 5vmin;
   height: 6vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
@@ -204,7 +202,7 @@ a {
 }
 .rightBtn2{
   float: right;
-  margin-top: 10vmin;
+  margin-top: 15vmin;
   width: 5vmin;
   height: 6vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
