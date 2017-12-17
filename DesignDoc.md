@@ -1,4 +1,4 @@
-# News Overview Website	
+# News Overview Website
 
 ### 1. 预期实现的功能：
 
@@ -8,7 +8,7 @@
 
 ​	3) 实现翻页功能，点击按钮可以切换到上一条或下一条。
 
-
+  4) 闹钟功能
 
 ### 2. 分工
 
