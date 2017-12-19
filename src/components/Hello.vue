@@ -2,15 +2,14 @@
   <div class="hello">
 
     <div class="textFrame">
-      <button class="leftBtn1" @click="lastAmMsg()"><</button>
-      <button class="rightBtn1" @click="nextAmMsg()">></button>
       <h2 v-bind:style="{}">
         News
       </h2>
-      {{message}}
+      <div>{{message}}</div>
+      <button class="next" @click="delete_n_next()">Delete and Next</button>
     </div>
     <div class="title">The world is in your eyes.</div>
-    <button class="AMB" @click="createNews('Am','Hello world!')">America</button>
+    <button class="AMB" @click="Am_click()">America</button>
     <button class="ASB">Asia & Pacific</button>
     <button class="EUB">Europe</button>
     <br>
@@ -34,23 +33,42 @@ export default {
       news.content = c  // the content of the news.
       news.heat = h // the heat of the news
       this.newsArr.push(news)
-      this.message = c
     },
     init: function () {
       this.createNews('Af', 'News from Africa', 30)
       this.createNews('As', 'News from Asia', 70)
       this.createNews('Eu', 'News from Europe', 70)
       this.createNews('Am', 'News from America', 100)
+      this.inited = 1
+    },
+    delete_n_next () {
+      if (this.g_region === 'Am') {
+        this.newsArr.splice(this.pos)
+        this.Am_click()
+      }
     },
     Am_click: function () {
       if (this.inited === 0) {
         this.init()
       }
-
+      let found = 0
+      for (let i = 0; i < this.newsArr.length; i++) {
+        if (this.newsArr[i].region === 'Am') {
+          found = 1
+          this.pos = i
+          this.g_region = 'Am'
+          this.message = this.newsArr[i].content
+          break
+        }
+      }
+      if (found === 0) {
+        this.message = 'No news from America'
+      }
     }
   },
   data () {
     return {
+      pos: 0, // the index of news presented in the array.
       inited: 0, // 0 of not initialized.
       g_region: 0, // region should be 'Af', 'Am', 'As' or 'Eu' after initialized.
       message: 'The world is in your eyes!',
@@ -108,21 +126,16 @@ li {
 a {
   color: #42b983;
 }
-.leftBtn1{
-  float: left;
-  margin-top:32vmin;
-  width: 5vmin;
-  height: 6vmin;
+.next{
+  float: right;
+  font-size: 2vmin;
+  margin-top:78vmin;
+  width: 18vmin;
+  height: 4vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
   vertical-align: center;
 }
-.rightBtn1{
-  float: right;
-  margin-top: 32vmin;
-  width: 5vmin;
-  height: 6vmin;
-  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
-}
+
 
 .AMB{
   text-align: center;
