@@ -1,43 +1,26 @@
 <template>
   <div class="hello">
-    <h1 v-bind:style="{color: 'darkslategrey'}">{{msg}}</h1>
-    <div class="Am">
+
+    <div class="textFrame">
       <button class="leftBtn1" @click="lastAmMsg()"><</button>
       <button class="rightBtn1" @click="nextAmMsg()">></button>
-      <h2 v-bind:style="{color: America.color}">
-        America
+      <h2 v-bind:style="{}">
+        News
       </h2>
-      <br>
-      {{America.message}}
+      {{message}}
     </div>
-    <div class="As">
-      <button class="leftBtn1" @click="lastAsMsg()"><</button>
-      <button class="rightBtn1" @click="nextAsMsg()">></button>
-      <h2 v-bind:style="{color: Asia.color}">
-        Asia & Pacific
-      </h2>
-      <br>
-      {{Asia.message}}
-    </div>
-    <div class="Eu">
-      <button class="leftBtn2" @click="lastEuMsg()"><</button>
-      <button class="rightBtn2" @click="nextEuMsg()">></button>
-      <h2 v-bind:style="{color: Europe.color}">
-        Europe
-      </h2>
-      {{Europe.message}}
-    </div>
-    <div class="Af">
-      <button class="leftBtn2" @click="lastAfMsg()"><</button>
-      <button class="rightBtn2" @click="nextAfMsg()">></button>
-      <h2 v-bind:style="{color: Africa.color}">
-        Africa
-      </h2>
-      {{Africa.message}}
-    </div>
+    <div class="title">The world is in your eyes.</div>
+    <button class="AMB" @click="createNews('Am','Hello world!')">America</button>
+    <button class="ASB">Asia & Pacific</button>
+    <button class="EUB">Europe</button>
+    <br>
+    <button class="AFB">Africa</button>
+    <button class="PUB">Publish my news</button>
+  <br>
     <ul>
-      <li><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
+      <li style="float: left"><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
     </ul>
+
   </div>
 </template>
 
@@ -45,67 +28,33 @@
 export default {
   name: 'Hello',
   methods: {
-    lastAmMsg: function () {
-      this.America.pos--
-      if (this.America.pos < 0) {
-        this.America.pos = this.America.news.length - 1
-      }
-      this.America.message = this.America.news[this.America.pos]
+    createNews: function (r, c, h) {
+      let news = Object()
+      news.region = r   // region should be 'Af', 'Am', 'As' or 'Eu'.
+      news.content = c  // the content of the news.
+      news.heat = h // the heat of the news
+      this.newsArr.push(news)
+      this.message = c
     },
-    nextAmMsg: function () {
-      this.America.pos++
-      if (this.America.pos > this.America.news.length - 1) {
-        this.America.pos = 0
-      }
-      this.America.message = this.America.news[this.America.pos]
+    init: function () {
+      this.createNews('Af', 'News from Africa', 30)
+      this.createNews('As', 'News from Asia', 70)
+      this.createNews('Eu', 'News from Europe', 70)
+      this.createNews('Am', 'News from America', 100)
     },
-    lastAsMsg: function () {
-      this.Asia.pos--
-      if (this.Asia.pos < 0) {
-        this.Asia.pos = this.Asia.news.length - 1
+    Am_click: function () {
+      if (this.inited === 0) {
+        this.init()
       }
-      this.Asia.message = this.Asia.news[this.Asia.pos]
-    },
-    nextAsMsg: function () {
-      this.Asia.pos++
-      if (this.Asia.pos > this.Asia.news.length - 1) {
-        this.Asia.pos = 0
-      }
-      this.Asia.message = this.Asia.news[this.Asia.pos]
+
     }
   },
   data () {
     return {
-      msg: 'The world is under your eyes!',
-      arr: [],
-      Africa: {
-        pos: 0,
-        number: 0,
-        color: 'blue',
-        news: ['这里是非洲'],
-        message: '这里是非洲'
-      },
-      America: {
-        pos: 0,
-        number: 0,
-        color: 'blue',
-        news: ['这是第一条新闻', '这是第二二二二二条新闻'],
-        message: '这是第一条新闻。'
-      },
-      Europe: {
-        pos: 0,
-        number: 0,
-        color: 'blue',
-        news: ['这里是欧洲'],
-        message: '这里是欧洲'
-      },
-      Asia: {
-        pos: 0,
-        number: 0,
-        color: 'blue',
-        news: ['这里是亚洲'],
-        message: '这里是亚洲'
-      }
+      inited: 0, // 0 of not initialized.
+      g_region: 0, // region should be 'Af', 'Am', 'As' or 'Eu' after initialized.
+      message: 'The world is in your eyes!',
+      newsArr: []
     }
   }
 }
@@ -121,6 +70,7 @@ button{
 h1 {
   font-weight: bolder;
   font-size:6vmin;
+  margin-bottom: 2vmin;
 }
 h2{
   margin: 0;
@@ -132,41 +82,22 @@ p{
   font-size: 4vmin;
 }
 .hello{
+  float: left;
+  width:200vmin;
+  margin-top: 0;
   word-wrap: break-word;
-  margin-top: 2vmin;
 }
-.Am{
-  margin-left: 10vmin;
+.textFrame{
+  margin-top:3vmin;
+  margin-left: 3vmin;
   float: left;
   width: 40vmin;
-  height: 70vmin;
-  background: aqua;
-  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+  height: 90vmin;
+  background: rgba(222,222,221,0.3);
 }
-.As{
-  margin-right: 10vmin;
-  float: right;
-  width: 40vmin;
-  height: 70vmin;
-  background: lightgrey;
-  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
-}
-.Eu{
-  margin-left: 50vmin;
-  margin-right: 50vmin;
-  height: 35vmin;
-  background:greenyellow;
-  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
-}
-.Af{
-  margin-left: 50vmin;
-  margin-right: 50vmin;
-  height: 35vmin;
-  background:orangered;
-  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
-}
-
 ul {
+  float: bottom;
+  margin-top: 1vmin;
   list-style-type: none;
   padding: 0;
 }
@@ -192,19 +123,62 @@ a {
   height: 6vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
-.leftBtn2{
+
+.AMB{
+  text-align: center;
+  background: none;
+  border: 0;
   float: left;
-  margin-top: 15vmin;
-  width: 5vmin;
-  height: 6vmin;
+  margin-left: 0;
+  margin-top: 10vmin;
+  width: 40vmin;
+  height: 60vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
-  vertical-align: center;
 }
-.rightBtn2{
-  float: right;
-  margin-top: 15vmin;
-  width: 5vmin;
-  height: 6vmin;
+.EUB{
+  background: none;
+  border: 0;
+  float: left;
+  margin-left: 7vmin;
+  margin-top: 10vmin;
+  width: 25vmin;
+  height: 15vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.ASB{
+  margin-top: 10vmin;
+  background: none;
+  border: 0;
+  float: right;
+  margin-right: 35vmin;
+  width:45vmin;
+  height:60vmin;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.AFB{
+  background: none;
+  border: 0;
+  float: bottom;
+  margin-left: 3vmin;
+  width: 28vmin;
+  height: 40vmin;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.PUB{
+  float: left;
+  border:0;
+  background-color: aqua;
+  margin-left: 1vmin;
+  width:40vmin;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+}
+.title{
+  float:top;
+  margin-left: 50vmin;
+  width: 100vmin;
+  vertical-align: top;
+  text-align: center;
+  font-size: 7vmin;
+  color: darkslategrey;
 }
 </style>
