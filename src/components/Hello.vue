@@ -14,7 +14,7 @@
     <button class="EUB">Europe</button>
     <br>
     <button class="AFB">Africa</button>
-    <button class="PUB">Publish my news</button>
+    <button class="PUB" @click="pub_click()">Publish my news</button>
   <br>
     <ul>
       <li style="float: left"><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
@@ -41,11 +41,43 @@ export default {
       this.createNews('Am', 'News from America', 100)
       this.inited = 1
     },
-    delete_n_next () {
+    delete_n_next: function () {
+      if (this.pos === -1) {
+        alert('No news to delete!')
+        return
+      }
       if (this.g_region === 'Am') {
-        this.newsArr.splice(this.pos)
+        this.newsArr.splice(this.pos, 1)
         this.Am_click()
       }
+    },
+    pub_click: function () {
+      var region, info
+      while (true) {
+        region = prompt('Please input the region of your news', 'Asia')
+        if (region === null) return false
+        region = region.toLowerCase()
+        if (region === 'asia') {
+          region = 'As'
+          break
+        } else if (region === 'america') {
+          region = 'Am'
+          break
+        } else if (region === 'europe') {
+          region = 'Eu'
+          break
+        } else if (region === 'africa') {
+          region = 'Af'
+          break
+        }
+        alert('Error! Only "America", "Africa", "Europe", "Asia" are valid inputs.')
+      }
+      while (true) {
+        info = prompt('Please describe the news:', 'SJTU SE Group3 did a good job in their project!')
+        if (info !== null) break
+      }
+      this.createNews(region, info, 0)
+      alert('Success!')
     },
     Am_click: function () {
       if (this.inited === 0) {
@@ -63,6 +95,7 @@ export default {
       }
       if (found === 0) {
         this.message = 'No news from America'
+        this.pos = -1
       }
     }
   },
