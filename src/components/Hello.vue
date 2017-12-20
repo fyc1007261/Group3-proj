@@ -42,12 +42,13 @@ export default {
     delete_n_next: function () {
       if (this.pos === -1) {
         alert('No news to delete!')
-        return
+        return false
       }
       if (this.g_region === 'Am') {
         this.newsArr.splice(this.pos, 1)
         this.Am_click()
       }
+      return true
     },
     like: function () {
       let currentObj = this.newsArr[this.pos]
@@ -56,8 +57,10 @@ export default {
         currentObj.heat += 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        return true
       } else {
         alert('Sorry, you have already commented on this news.')
+        return false
       }
     },
     dislike: function () {
@@ -67,14 +70,17 @@ export default {
         currentObj.heat -= 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        return true
       } else {
         alert('Sorry, you have already commented on this news.')
+        return false
       }
     },
-    pub_click: function () {
+    pub_click: function (test = false, testReg = 'Asia') {
       var region, info
       while (true) {
-        region = prompt('Please input the region of your news', 'Asia')
+        if (test) region = testReg
+        else region = prompt('Please input the region of your news', 'Asia')
         if (region === null) return false
         region = region.toLowerCase()
         if (region === 'asia') {
@@ -93,7 +99,8 @@ export default {
         alert('Error! Only "America", "Africa", "Europe", "Asia" are valid inputs.')
       }
       while (true) {
-        info = prompt('Please describe the news:', 'SJTU SE Group3 did a good job in their project!')
+        if (test) info = 'SJTU SE Group3 did a good job in their project!'
+        else info = prompt('Please describe the news:', 'SJTU SE Group3 did a good job in their project!')
         if (info !== null) break
       }
       this.createNews(region, info, 0)
