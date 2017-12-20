@@ -56,8 +56,10 @@ export default {
         currentObj.heat += 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        return true
       } else {
         alert('Sorry, you have already commented on this news.')
+        return false
       }
     },
     dislike: function () {
@@ -67,8 +69,10 @@ export default {
         currentObj.heat -= 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        return true
       } else {
         alert('Sorry, you have already commented on this news.')
+        return false
       }
     },
     pub_click: function () {
