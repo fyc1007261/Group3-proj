@@ -2,11 +2,13 @@
   <div class="hello">
 
     <div class="textFrame">
-      <h2 v-bind:style="{}">
+      <h2  v-bind:style="{}">
         News
       </h2>
-      <div>{{message}}</div>
+      <div style="height: 70vmin">{{message}}</div>
       <button class="next" @click="delete_n_next()">Delete and Next</button>
+      <button class="like" @click="dislike()">Dislike</button>
+      <button class="like" @click="like()">Like</button>
     </div>
     <div class="title">The world is in your eyes.</div>
     <button class="AMB" @click="Am_click()">America</button>
@@ -15,11 +17,6 @@
     <br>
     <button class="AFB">Africa</button>
     <button class="PUB" @click="pub_click()">Publish my news</button>
-  <br>
-    <ul>
-      <li style="float: left"><a href="https://github.com/fyc1007261/News-overview" target="_blank">Github Repository</a></li>
-    </ul>
-
   </div>
 </template>
 
@@ -32,13 +29,14 @@ export default {
       news.region = r   // region should be 'Af', 'Am', 'As' or 'Eu'.
       news.content = c  // the content of the news.
       news.heat = h // the heat of the news
+      news.cmt = 0 // whether the user has commented on this news.
       this.newsArr.push(news)
     },
     init: function () {
-      this.createNews('Af', 'News from Africa', 30)
-      this.createNews('As', 'News from Asia', 70)
-      this.createNews('Eu', 'News from Europe', 70)
-      this.createNews('Am', 'News from America', 100)
+      this.createNews('Af', 'Andrew Harding: What Ramaphosa victory means for South Africa', 30)
+      this.createNews('As', 'Asia is driving the Bitcoin craze?', 70)
+      this.createNews('Eu', 'UK to soften Brexit impact on European banks!', 70)
+      this.createNews('Am', 'Kobe Bryant Jersey Retirement on Dec.19th!', 100)
       this.inited = 1
     },
     delete_n_next: function () {
@@ -49,6 +47,28 @@ export default {
       if (this.g_region === 'Am') {
         this.newsArr.splice(this.pos, 1)
         this.Am_click()
+      }
+    },
+    like: function () {
+      let currentObj = this.newsArr[this.pos]
+      if (currentObj.cmt === 0) {
+        currentObj.cmt = 1
+        currentObj.heat += 1
+        let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
+        alert(msg)
+      } else {
+        alert('Sorry, you have already commented on this news.')
+      }
+    },
+    dislike: function () {
+      let currentObj = this.newsArr[this.pos]
+      if (currentObj.cmt === 0) {
+        currentObj.cmt = 1
+        currentObj.heat -= 1
+        let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
+        alert(msg)
+      } else {
+        alert('Sorry, you have already commented on this news.')
       }
     },
     pub_click: function () {
@@ -124,7 +144,7 @@ h1 {
   margin-bottom: 2vmin;
 }
 h2{
-  margin: 0;
+  margin: 5vmin;
   font-weight: bolder;
   font-size: 4vmin;
 }
@@ -147,14 +167,13 @@ p{
   background: rgba(222,222,221,0.3);
 }
 ul {
-  float: bottom;
-  margin-top: 1vmin;
+  float: right;
+  margin-top: 10vmin;
   list-style-type: none;
-  padding: 0;
 }
 li {
+  float: left;
   display: inline-block;
-  margin: 10px;
 }
 a {
   color: #42b983;
@@ -162,13 +181,21 @@ a {
 .next{
   float: right;
   font-size: 2vmin;
-  margin-top:78vmin;
+  margin-bottom:2vmin;
   width: 18vmin;
   height: 4vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
   vertical-align: center;
 }
-
+.like{
+  float: right;
+  font-size: 2vmin;
+  margin-bottom:2vmin;
+  width: 9vmin;
+  height: 4vmin;
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
+  vertical-align: center;
+}
 
 .AMB{
   text-align: center;
@@ -212,9 +239,8 @@ a {
 }
 .PUB{
   float: left;
-  border:0;
-  background-color: aqua;
-  margin-left: 1vmin;
+  margin-top:5vmin;
+  margin-left: 35vmin;
   width:40vmin;
   filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 }
@@ -227,4 +253,5 @@ a {
   font-size: 7vmin;
   color: darkslategrey;
 }
+
 </style>
