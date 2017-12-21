@@ -2,10 +2,9 @@
   <div class="hello">
 
     <div class="textFrame">
-      <h2  v-bind:style="{}">
-        News
-      </h2>
-      <div style="height: 70vmin">{{message}}</div>
+      <h2  v-bind:style="{}">News</h2>
+      <h3 style="color:red">HEAT: {{g_heat}}</h3>
+      <div style="height: 65vmin">{{message}}</div>
       <button class="next" @click="delete_n_next()">Delete and Next</button>
       <button class="like" @click="dislike()">Dislike</button>
       <button class="like" @click="like()">Like</button>
@@ -48,6 +47,18 @@ export default {
         this.newsArr.splice(this.pos, 1)
         this.Am_click()
       }
+      if (this.g_region === 'As') {
+        this.newsArr.splice(this.pos, 1)
+        this.As_click()
+      }
+      if (this.g_region === 'Af') {
+        this.newsArr.splice(this.pos, 1)
+        this.Af_click()
+      }
+      if (this.g_region === 'Eu') {
+        this.newsArr.splice(this.pos, 1)
+        this.Eu_click()
+      }
       return true
     },
     like: function () {
@@ -57,6 +68,7 @@ export default {
         currentObj.heat += 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        this.g_heat += 1
         return true
       } else {
         alert('Sorry, you have already commented on this news.')
@@ -70,6 +82,7 @@ export default {
         currentObj.heat -= 1
         let msg = 'Success! The heat of the news is now ' + currentObj.heat.toString() + '.'
         alert(msg)
+        this.g_heat -= 1
         return true
       } else {
         alert('Sorry, you have already commented on this news.')
@@ -116,15 +129,17 @@ export default {
           found = 1
           this.pos = i
           this.g_region = 'Am'
+          this.g_heat = this.newsArr[i].heat
           this.message = this.newsArr[i].content
           break
         }
       }
       if (found === 0) {
         this.message = 'No news from America'
+        this.g_heat = 0
         this.pos = -1
       }
-    }
+    },
     Af_click: function () {
       if (this.inited === 0) {
         this.init()
@@ -135,15 +150,17 @@ export default {
           found = 1
           this.pos = i
           this.g_region = 'Af'
+          this.g_heat = this.newsArr[i].heat
           this.message = this.newsArr[i].content
           break
         }
       }
       if (found === 0) {
         this.message = 'No news from Africa'
+        this.g_heat = 0
         this.pos = -1
       }
-    }
+    },
     As_click: function () {
       if (this.inited === 0) {
         this.init()
@@ -155,14 +172,16 @@ export default {
           this.pos = i
           this.g_region = 'As'
           this.message = this.newsArr[i].content
+          this.g_heat = this.newsArr[i].heat
           break
         }
       }
       if (found === 0) {
         this.message = 'No news from Asia'
+        this.g_heat = 0
         this.pos = -1
       }
-    }
+    },
     Eu_click: function () {
       if (this.inited === 0) {
         this.init()
@@ -174,11 +193,13 @@ export default {
           this.pos = i
           this.g_region = 'Eu'
           this.message = this.newsArr[i].content
+          this.g_heat = this.newsArr[i].heat
           break
         }
       }
       if (found === 0) {
         this.message = 'No news from Europe'
+        this.g_heat = 0
         this.pos = -1
       }
     }
@@ -186,6 +207,7 @@ export default {
   data () {
     return {
       pos: 0, // the index of news presented in the array.
+      g_heat: 0, // the heat of news presented
       inited: 0, // 0 of not initialized.
       g_region: 0, // region should be 'Af', 'Am', 'As' or 'Eu' after initialized.
       message: 'The world is in your eyes!',
