@@ -12,10 +12,10 @@
     </div>
     <div class="title">The world is in your eyes.</div>
     <button class="AMB" @click="Am_click()">America</button>
-    <button class="ASB">Asia & Pacific</button>
-    <button class="EUB">Europe</button>
+    <button class="ASB" @click="As_click()">Asia & Pacific</button>
+    <button class="EUB" @click="Eu_click()">Europe</button>
     <br>
-    <button class="AFB">Africa</button>
+    <button class="AFB" @click="Af_click()">Africa</button>
     <button class="PUB" @click="pub_click()">Publish my news</button>
   </div>
 </template>
@@ -122,6 +122,63 @@ export default {
       }
       if (found === 0) {
         this.message = 'No news from America'
+        this.pos = -1
+      }
+    }
+    Af_click: function () {
+      if (this.inited === 0) {
+        this.init()
+      }
+      let found = 0
+      for (let i = 0; i < this.newsArr.length; i++) {
+        if (this.newsArr[i].region === 'Af') {
+          found = 1
+          this.pos = i
+          this.g_region = 'Af'
+          this.message = this.newsArr[i].content
+          break
+        }
+      }
+      if (found === 0) {
+        this.message = 'No news from Africa'
+        this.pos = -1
+      }
+    }
+    As_click: function () {
+      if (this.inited === 0) {
+        this.init()
+      }
+      let found = 0
+      for (let i = 0; i < this.newsArr.length; i++) {
+        if (this.newsArr[i].region === 'As') {
+          found = 1
+          this.pos = i
+          this.g_region = 'As'
+          this.message = this.newsArr[i].content
+          break
+        }
+      }
+      if (found === 0) {
+        this.message = 'No news from Asia'
+        this.pos = -1
+      }
+    }
+    Eu_click: function () {
+      if (this.inited === 0) {
+        this.init()
+      }
+      let found = 0
+      for (let i = 0; i < this.newsArr.length; i++) {
+        if (this.newsArr[i].region === 'Eu') {
+          found = 1
+          this.pos = i
+          this.g_region = 'Eu'
+          this.message = this.newsArr[i].content
+          break
+        }
+      }
+      if (found === 0) {
+        this.message = 'No news from Europe'
         this.pos = -1
       }
     }
