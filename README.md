@@ -10,14 +10,16 @@
 npm install
 
 # serve with hot reload at localhost:8080
-# If chrome driver is not successfully installed, which is very common, just manually type the address into the browser.
+# If chrome driver is not successfully installed, which is very common, 
+# just manually type the address into the browser.
 npm run dev
 
 # build for production with minification
 npm run build
 
 # run unit tests
-# It usually causes some error, causing the website of testing not working, but it does not matter. The test can still run correctly.
+# It usually causes some error, causing the website of testing not working, 
+# but it does not matter. The test can still run correctly.
 # Coverage report is in ./test/unit/coverage
 npm run unit
 ```
@@ -44,7 +46,7 @@ npm run unit
 
 ​	Cai Yifan organized the whole projects, did most of the work related to styles and tests, and some work related to logics. 
 
-​	Wu Zhengyu did most of the work related to the logics.
+​	Wu Zhengyu did most of the work related to the logics, and customized PowerPoint presentation.
 
 ​	Cai Yifan, Wu Zhengyu, Dong Yutao, He Yuwen raised ideas of this project.
 
