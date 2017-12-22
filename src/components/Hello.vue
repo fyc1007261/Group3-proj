@@ -23,6 +23,23 @@
 export default {
   name: 'Hello',
   methods: {
+    sort: function () {
+      // sort the news based on the heat value
+      let len = this.newsArr.length
+      for (let i = 0; i < len; i++) {
+        let maxHeat = this.newsArr[i].heat
+        let index = i
+        for (let j = i; j < len; j++) {
+          if (this.newsArr[j].heat >= maxHeat) {
+            maxHeat = this.newsArr[j].heat
+            index = j
+          }
+        }
+        let temp = this.newsArr[i]
+        this.newsArr[i] = this.newsArr[index]
+        this.newsArr[index] = temp
+      }
+    },
     createNews: function (r, c, h) {
       let news = Object()
       news.region = r   // region should be 'Af', 'Am', 'As' or 'Eu'.
@@ -30,6 +47,7 @@ export default {
       news.heat = h // the heat of the news
       news.cmt = 0 // whether the user has commented on this news.
       this.newsArr.push(news)
+      this.sort()
     },
     init: function () {
       this.createNews('Af', 'Andrew Harding: What Ramaphosa victory means for South Africa', 30)
@@ -210,7 +228,7 @@ export default {
       g_heat: 0, // the heat of news presented
       inited: 0, // 0 of not initialized.
       g_region: 0, // region should be 'Af', 'Am', 'As' or 'Eu' after initialized.
-      message: 'The world is in your eyes!',
+      message: 'Click on the map to fetch news!',
       newsArr: []
     }
   }

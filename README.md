@@ -45,6 +45,10 @@ npm run unit
 
 ​	You are allowed to publish your firsthand news on the website, you need to select a region and input the content of the news. The heat of your news will be initialized by zero. Your news can be hotter when other users like your news click *Like* on it.
 
+##### 4. Automatic sorting
+
+​	After a news published, all pieces of news will be sorted based on its *heat*. Therefore, users will always see news with higher *heat* first. 
+
 ## IV.  Division of work  
 
 ​	Cai Yifan organized the whole projects, did most of the work related to styles and tests, and some work related to logics. 
