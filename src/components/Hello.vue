@@ -23,23 +23,6 @@
 export default {
   name: 'Hello',
   methods: {
-    sort: function () {
-      // sort the news based on the heat value
-      var len = this.newsArr.length
-      for (var i = 0; i < len; i++) {
-        var maxHeat = this.newsArr[i].heat
-        var index = i
-        for (var j = i; j < len; j++) {
-          if (this.newsArr[j].heat >= maxHeat) {
-            maxHeat = this.newsArr[j].heat
-            index = j
-          }
-        }
-        var temp = this.newsArr[i]
-        this.newsArr[i] = this.newsArr[index]
-        this.newsArr[index] = temp
-      }
-    },
     createNews: function (r, c, h) {
       let news = Object()
       news.region = r   // region should be 'Af', 'Am', 'As' or 'Eu'.
