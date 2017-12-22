@@ -80,7 +80,7 @@ export default {
       return true
     },
     like: function () {
-      if (this.inited === 0){
+      if (this.inited === 0) {
         alert('You cannot comment on this.')
         return
       }
