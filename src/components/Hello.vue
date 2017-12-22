@@ -30,6 +30,7 @@ export default {
       news.heat = h // the heat of the news
       news.cmt = 0 // whether the user has commented on this news.
       this.newsArr.push(news)
+      this.sort()
     },
     init: function () {
       this.createNews('Af', 'Andrew Harding: What Ramaphosa victory means for South Africa', 30)
@@ -210,7 +211,7 @@ export default {
       g_heat: 0, // the heat of news presented
       inited: 0, // 0 of not initialized.
       g_region: 0, // region should be 'Af', 'Am', 'As' or 'Eu' after initialized.
-      message: 'The world is in your eyes!',
+      message: 'Click on the map to fetch news!',
       newsArr: []
     }
   }

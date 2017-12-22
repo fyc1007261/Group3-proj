@@ -96,7 +96,7 @@ describe('Hello.vue', () => {
     vm.Am_click()
     expect(vm.delete_n_next()).to.equal(true)
     expect(vm.pos).to.equal(-1)
-    expect(vm.heat).to.equal(0)
+    expect(vm.g_heat).to.equal(0)
     expect(vm.delete_n_next()).to.equal(false)
   })
 })
@@ -110,6 +110,17 @@ describe('Hello.vue', () => {
     vm.pub_click(true, 'Europe')
     vm.pub_click(true, 'Africa')
     vm.Am_click()
+    vm.delete_n_next()
     expect(vm.message).to.equal('SJTU SE Group3 did a good job in their project!')
+  })
+})
+
+describe('Hello.vue', () => {
+  it('Sort', () => {
+    const Constructor = Vue.extend(Hello)
+    const vm = new Constructor().$mount()
+    vm.pub_click(true, 'Asia')
+    vm.As_click()
+    expect(vm.message).to.equal('Asia is driving the Bitcoin craze?')
   })
 })
