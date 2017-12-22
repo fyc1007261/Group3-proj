@@ -25,17 +25,17 @@ export default {
   methods: {
     sort: function () {
       // sort the news based on the heat value
-      var len = this.newsArr.length
-      for (var i = 0; i < len; i++) {
-        var maxHeat = this.newsArr[i].heat
-        var index = i
-        for (var j = i; j < len; j++) {
+      let len = this.newsArr.length
+      for (let i = 0; i < len; i++) {
+        let maxHeat = this.newsArr[i].heat
+        let index = i
+        for (let j = i; j < len; j++) {
           if (this.newsArr[j].heat >= maxHeat) {
             maxHeat = this.newsArr[j].heat
             index = j
           }
         }
-        var temp = this.newsArr[i]
+        let temp = this.newsArr[i]
         this.newsArr[i] = this.newsArr[index]
         this.newsArr[index] = temp
       }
