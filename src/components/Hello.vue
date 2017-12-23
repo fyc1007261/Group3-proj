@@ -80,6 +80,10 @@ export default {
       return true
     },
     like: function () {
+      if (this.inited === 0) {
+        alert('You cannot comment on this.')
+        return
+      }
       let currentObj = this.newsArr[this.pos]
       if (currentObj.cmt === 0) {
         currentObj.cmt = 1
@@ -94,6 +98,10 @@ export default {
       }
     },
     dislike: function () {
+      if (this.inited === 0) {
+        alert('You cannot comment on this.')
+        return
+      }
       let currentObj = this.newsArr[this.pos]
       if (currentObj.cmt === 0) {
         currentObj.cmt = 1
